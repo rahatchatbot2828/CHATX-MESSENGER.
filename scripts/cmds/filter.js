@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   config: {
     name: "filter",
-    aliases: [],
+    aliases: [flr],
     version: "1.0",
     author: "vex_Kshitiz",
     shortDescription: "Apply filters to images",
