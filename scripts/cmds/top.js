@@ -1,169 +1,74 @@
+const axios = require("axios");
+
+function formatMoney(num) {
+if (num >= 1e12) return (num / 1e12).toFixed(1).replace(/.0$/, '') + "T";
+if (num >= 1e9) return (num / 1e9).toFixed(1).replace(/.0$/, '') + "B";
+if (num >= 1e6) return (num / 1e6).toFixed(1).replace(/.0$/, '') + "M";
+if (num >= 1e3) return (num / 1e3).toFixed(1).replace(/.0$/, '') + "K";
+return num.toString();
+}
+
 module.exports = {
-
-  config: {
-
-    name: "top",
-
-    version: "1.1",
-
-    author: "Shikaki",
-
-    category: "economy",
-
-    shortDescription: {
-
-      vi: "Xem 10 người giàu nhất",
-
-      en: "View the top 10 richest people",
-
-    },
-
-    longDescription: {
-
-      vi: "Xem danh sách 10 người giàu nhất trong nhóm",
-
-      en: "View the list of the top 10 richest people in the group",
-
-    },
-
-    guide: {
-
-      en: "{pn} 1\n{pn} 50\n{pn} 100",
-
-    },
-
-    role: 0,
-
-  },
-
-
-
-  onStart: async function ({ message, usersData, args, api }) {
-
-    // Get all users' data
-
-    const allUserData = await usersData.getAll();
-
-
-
-    // Filter out users with invalid money values and sort by money in descending order
-
-    const sortedUsers = allUserData
-
-      .filter((user) => !isNaN(user.money))
-
-      .sort((a, b) => b.money - a.money);
-
-
-
-    let msg = "♔︎ 𝐓𝐎𝐏 𝐑𝐈𝐂𝐇𝐄𝐒𝐓 𝐏𝐄𝐑𝐒𝐎𝐍 ♔︎\n \n";
-
-
-
-    if (args[0] === "top") {
-
-      // Display the richest person
-
-      if (sortedUsers.length > 0) {
-
-        const richestUser = sortedUsers[0];
-
-        const formattedBalance = formatNumberWithFullForm(richestUser.money);
-
-        msg += `1. ♕︎${richestUser.name}♕︎ \n        ➥ $ ${formattedBalance}\n`;
-
-      } else {
-
-        msg += "No users found.\n";
-
-      }
-
-    } else {
-
-      // Default: Display the top 10 richest people
-
-      const topCount = Math.min(parseInt(args[0]) || 10, sortedUsers.length);
-
-      sortedUsers.slice(0, topCount).forEach((user, index) => {
-
-        const formattedBalance = formatNumberWithFullForm(user.money);
-
-        msg += `${index + 1}. ♕︎${user.name}♕︎ \n        ➥$ ${formattedBalance}\n`;
-
-      });
-
-    }
-
-
-
-    msg += "💫𝐁𝐞𝐬𝐭 𝐨𝐟 𝐥𝐮𝐜𝐤💫";
-
-
-
-    message.reply(msg);
-
-  },
-
-};
-
-
-
-// Function to format a number with full forms (e.g., 1 Thousand, 133 Million, 76.2 Billion)
-
-function formatNumberWithFullForm(number) {
-
-  const fullForms = [
-
-    "",
-
-    "K",
-
-    "M",
-
-    "Billion",
-
-    "Trillion",
-
-    "Quadrillion",
-
-    "Quintillion",
-
-    "Hextillion",
-
-    "Heptillion",
-
-    "Octillion",
-
-    "Nonillion",
-
-    "Decillion",
-
-  ];
-
-
-
-  // Calculate the full form of the number (e.g., Thousand, Million, Billion)
-
-  let fullFormIndex = 0;
-
-  while (number >= 1000 && fullFormIndex < fullForms.length - 1) {
-
-    number /= 1000;
-
-    fullFormIndex++;
-
-  }
-
-
-
-  // Format the number with two digits after the decimal point
-
-  const formattedNumber = number.toFixed(2);
-
-
-
-  // Add the full form to the formatted number
-
-  return `${formattedNumber} ${fullForms[fullFormIndex]}`;
+config: {
+name: "top",
+aliases: ["toprich"],
+version: "1.2",
+author: "Azadx69x",
+countDown: 5,
+role: 0,
+shortDescription: "Show top 15 richest users",
+longDescription: "Show money top 15 richest leaderboard.",
+category: "economy",
+guide: "{p}top"
+},
+
+onStart: async function ({ message, usersData }) {
+try {
+const allUsers = await usersData.getAll();
+if (allUsers.length === 0) return message.reply("No user data available!");
+
+const sorted = allUsers  
+    .sort((a, b) => (b.money || 0) - (a.money || 0))  
+    .slice(0, 15);  
+
+  let text = "━━━━━━━━━━━━━━━━━━━━\n";  
+  text += "  🏆 𝗧𝗢𝗣 𝗥𝗜𝗖𝗛𝗘𝗦𝗧 𝗨𝗦𝗘𝗥𝗦 🏆\n";  
+  text += "━━━━━━━━━━━━━━━━━━━━\n\n";  
+
+  const medals = ["👑", "🥈", "🥉"];  
+  for (let i = 0; i < 3 && i < sorted.length; i++) {  
+    const u = sorted[i];  
+    text += `━━━━━━━━━━━━━━━━━━━━\n${medals[i]} 𝗧𝗢𝗣 = ${i + 1}\n`;  
+    text += `👤 𝗡𝗮𝗺𝗲: ${u.name || "Unknown"}\n`;  
+    text += `🏅 𝗥𝗮𝗻𝗸: #${i + 1}\n`;  
+    text += `💰 𝗠𝗼𝗻𝗲𝘆: ${formatMoney(u.money || 0)}₵\n`;  
+  }  
+
+  text += "━━━━━━━━━━━━━━━━━━━━\n";  
+  text += "🔐 𝗢𝗧𝗛𝗘𝗥 𝗣𝗟𝗔𝗬𝗘𝗥𝗦\n";  
+  text += "━━━━━━━━━━━━━━━━━━━━\n";  
+
+  for (let i = 3; i < sorted.length; i++) {  
+    const u = sorted[i];  
+    text += `↘️ Top = ${i + 1}\n👤 ${u.name || "Unknown"}\n🪙 ${formatMoney(u.money || 0)}₵\n`;  
+    text += "━━━━━━━━━━━━━━━━━━━━\n";  
+  }  
+
+  const urls = [  
+    "https://files.catbox.moe/to847c.jpeg",  
+    "https://files.catbox.moe/kzae2x.jpeg",  
+    "https://files.catbox.moe/1edyib.jpeg"  
+  ];  
+  const randomUrl = urls[Math.floor(Math.random() * urls.length)];  
+  const res = await axios.get(randomUrl, { responseType: "stream" });  
+
+  await message.reply({  
+    body: text,  
+    attachment: res.data  
+  });  
+} catch {  
+  message.reply("❌ Error showing leaderboard!");  
+}
 
 }
+};
