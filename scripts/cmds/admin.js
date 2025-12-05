@@ -8,7 +8,7 @@ module.exports = {
         version: "1.1",
         author: "Azadx69x",
         countDown: 5,
-        role: 1,
+        role: 0,
         shortDescription: {
             en: "𝗔𝗱𝗱, 𝗿𝗲𝗺𝗼𝘃𝗲 𝗼𝗿 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗮𝗱𝗺𝗶𝗻 𝗹𝗶𝘀𝘁"
         },
