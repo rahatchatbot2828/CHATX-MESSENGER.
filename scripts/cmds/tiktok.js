@@ -6,7 +6,7 @@ module.exports = {
     name: "tiktok",
     aliases: ["tt", "tok", "tktk"],
     version: "1.1",
-    author: "Azadx69x",//author change korle tor marechudi 
+    author: "Azadx69x", //author change korle tor marechudi 
     role: 0,
     shortDescription: "Random TikTok video",
     longDescription: "Send random TikTok video",
@@ -32,8 +32,8 @@ module.exports = {
         return message.reply("⚠️ Please enter a search keyword!");
 
       await message.reply(`🔍 Searching for *${query}*...`);
-
-      const apiUrl = `https://azadx69x-tiktok-api.onrender.com/tiktok/search?query=${encodeURIComponent(query)}`;
+      
+      const apiUrl = `https://azadx69x-tiktok-api-vfxh.vercel.app/tiktok/search?query=${encodeURIComponent(query)}`;
       const { data } = await axios.get(apiUrl);
 
       if (!data?.list?.length)
