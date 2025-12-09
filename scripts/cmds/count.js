@@ -1,165 +1,138 @@
+const { createCanvas, loadImage } = require('canvas');
+const fs = require('fs-extra');
+const path = require('path');
+
 module.exports = {
-	config: {
-		name: "count",
-		version: "1.3",
-		author: "NTKhang",
-		countDown: 5,
-		role: 0,
-		description: {
-			vi: "Xem số lượng tin nhắn của tất cả thành viên hoặc bản thân (tính từ lúc bot vào nhóm)",
-			en: "View the number of messages of all members or yourself (since the bot joined the group)"
-		},
-		category: "box chat",
-		guide: {
-			vi: "   {pn}: dùng để xem số lượng tin nhắn của bạn"
-				+ "\n   {pn} @tag: dùng để xem số lượng tin nhắn của những người được tag"
-				+ "\n   {pn} all: dùng để xem số lượng tin nhắn của tất cả thành viên",
-			en: "   {pn}: used to view the number of messages of you"
-				+ "\n   {pn} @tag: used to view the number of messages of those tagged"
-				+ "\n   {pn} all: used to view the number of messages of all members"
-		}
-	},
+  config: {
+    name: "count",
+    version: "2.0",
+    author: "Azadx69x",
+    countDown: 5,
+    role: 0,
+    description: "Show top 15 users count",
+    category: "box chat"
+  },
 
-	langs: {
-		vi: {
-			count: "Số tin nhắn của các thành viên:",
-			endMessage: "Những người không có tên trong danh sách là chưa gửi tin nhắn nào.",
-			page: "Trang [%1/%2]",
-			reply: "Phản hồi tin nhắn này kèm số trang để xem tiếp",
-			result: "%1 hạng %2 với %3 tin nhắn",
-			yourResult: "Bạn đứng hạng %1 và đã gửi %2 tin nhắn trong nhóm này",
-			invalidPage: "Số trang không hợp lệ"
-		},
-		en: {
-			count: "Number of messages of members:",
-			endMessage: "Those who do not have a name in the list have not sent any messages.",
-			page: "Page [%1/%2]",
-			reply: "Reply to this message with the page number to view more",
-			result: "%1 rank %2 with %3 messages",
-			yourResult: "You are ranked %1 and have sent %2 messages in this group",
-			invalidPage: "Invalid page number"
-		}
-	},
+  onStart: async function({ api, event, threadsData, usersData, getLang }) {
+    try {
+      const threadID = event.threadID;
+      const threadData = await threadsData.get(threadID, "members") || [];
+      if (!threadData || threadData.length === 0)
+        return api.sendMessage("❌ No data available for this group.", threadID);
+      
+      const topUsers = threadData.sort((a, b) => (b.count || 0) - (a.count || 0)).slice(0, 15);
+      
+      const canvasWidth = 800;
+      const canvasHeight = 1200;
+      const canvas = createCanvas(canvasWidth, canvasHeight);
+      const ctx = canvas.getContext('2d');
+      
+      ctx.fillStyle = "#111111";
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      
+      ctx.fillStyle = "#FFD700";
+      ctx.font = "bold 40px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("🏆 TOP 15 Count list", canvasWidth / 2, 60);
+      
+      const top3Positions = [
+        { x: 400, y: 150, r: 70 },
+        { x: 200, y: 200, r: 70 },
+        { x: 620, y: 199, r: 70 }
+      ];
+      const top3Colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
 
-	onStart: async function ({ args, threadsData, message, event, api, commandName, getLang }) {
-		const { threadID, senderID } = event;
-		const threadData = await threadsData.get(threadID);
-		const { members } = threadData;
-		const usersInGroup = (await api.getThreadInfo(threadID)).participantIDs;
-		let arraySort = [];
-		for (const user of members) {
-			if (!usersInGroup.includes(user.userID))
-				continue;
-			const charac = "️️️️️️️️️️️️️️️️️"; // This character is banned from facebook chat (it is not an empty string)
-			arraySort.push({
-				name: user.name.includes(charac) ? `Uid: ${user.userID}` : user.name,
-				count: user.count,
-				uid: user.userID
-			});
-		}
-		let stt = 1;
-		arraySort.sort((a, b) => b.count - a.count);
-		arraySort.map(item => item.stt = stt++);
+      for (let i = 0; i < 3 && i < topUsers.length; i++) {
+        const user = topUsers[i];
+        const avatarUrl = await usersData.getAvatarUrl(user.userID);
+        let avatar;
+        try { avatar = await loadImage(avatarUrl); } 
+        catch { avatar = await loadImage('https://i.imgur.com/placeholder.png'); }
 
-		if (args[0]) {
-			if (args[0].toLowerCase() == "all") {
-				let msg = getLang("count");
-				const endMessage = getLang("endMessage");
-				for (const item of arraySort) {
-					if (item.count > 0)
-						msg += `\n${item.stt}/ ${item.name}: ${item.count}`;
-				}
+        const pos = top3Positions[i];
+        
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, pos.r, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+        ctx.drawImage(avatar, pos.x - pos.r, pos.y - pos.r, pos.r * 2, pos.r * 2);
+        ctx.restore();
+        
+        ctx.fillStyle = top3Colors[i];
+        ctx.font = "bold 28px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(user.name || "Anonymous", pos.x, pos.y + pos.r + 30);
+        
+        ctx.fillStyle = "#00FF00";
+        ctx.font = "22px Arial";
+        ctx.fillText(`${user.count || 0} msgs`, pos.x, pos.y + pos.r + 60);
+      }
+      
+      let startY = 350;
+      const rowHeight = 65;
 
-				if ((msg + endMessage).length > 19999) {
-					msg = "";
-					let page = parseInt(args[1]);
-					if (isNaN(page))
-						page = 1;
-					const splitPage = global.utils.splitPage(arraySort, 50);
-					arraySort = splitPage.allPage[page - 1];
-					for (const item of arraySort) {
-						if (item.count > 0)
-							msg += `\n${item.stt}/ ${item.name}: ${item.count}`;
-					}
-					msg += getLang("page", page, splitPage.totalPage)
-						+ `\n${getLang("reply")}`
-						+ `\n\n${endMessage}`;
+      for (let i = 3; i < topUsers.length; i++) {
+        const user = topUsers[i];
+        const avatarUrl = await usersData.getAvatarUrl(user.userID);
+        let avatar;
+        try { avatar = await loadImage(avatarUrl); } 
+        catch { avatar = await loadImage('https://i.imgur.com/placeholder.png'); }
+        
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(40, startY + 25, 25, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+        ctx.drawImage(avatar, 15, startY, 50, 50);
+        ctx.restore();
+        
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "bold 20px Arial";
+        ctx.textAlign = "left";
+        ctx.fillText(`${i + 1}. ${user.name || "Anonymous"}`, 80, startY + 32);
+        
+        ctx.fillStyle = "#00FF00";
+        ctx.font = "18px Arial";
+        ctx.textAlign = "right";
+        ctx.fillText(`${user.count || 0} msgs`, canvasWidth - 40, startY + 32);
 
-					return message.reply(msg, (err, info) => {
-						if (err)
-							return message.err(err);
-						global.GoatBot.onReply.set(info.messageID, {
-							commandName,
-							messageID: info.messageID,
-							splitPage,
-							author: senderID
-						});
-					});
-				}
-				message.reply(msg);
-			}
-			else if (event.mentions) {
-				let msg = "";
-				for (const id in event.mentions) {
-					const findUser = arraySort.find(item => item.uid == id);
-					msg += `\n${getLang("result", findUser.name, findUser.stt, findUser.count)}`;
-				}
-				message.reply(msg);
-			}
-		}
-		else {
-			const findUser = arraySort.find(item => item.uid == senderID);
-			return message.reply(getLang("yourResult", findUser.stt, findUser.count));
-		}
-	},
+        startY += rowHeight;
+      }
+      
+      ctx.fillStyle = "#AAAAAA";
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("Made by Azadx69x", canvasWidth / 2, canvasHeight - 20);
+      
+      const outputPath = path.resolve(__dirname, 'cache', `top15_${threadID}.png`);
+      await fs.ensureFile(outputPath);
+      const out = fs.createWriteStream(outputPath);
+      const stream = canvas.createPNGStream();
+      stream.pipe(out);
+      out.on('finish', () => {
+        api.sendMessage({ attachment: fs.createReadStream(outputPath) }, threadID);
+      });
 
-	onReply: ({ message, event, Reply, commandName, getLang }) => {
-		const { senderID, body } = event;
-		const { author, splitPage } = Reply;
-		if (author != senderID)
-			return;
-		const page = parseInt(body);
-		if (isNaN(page) || page < 1 || page > splitPage.totalPage)
-			return message.reply(getLang("invalidPage"));
-		let msg = getLang("count");
-		const endMessage = getLang("endMessage");
-		const arraySort = splitPage.allPage[page - 1];
-		for (const item of arraySort) {
-			if (item.count > 0)
-				msg += `\n${item.stt}/ ${item.name}: ${item.count}`;
-		}
-		msg += getLang("page", page, splitPage.totalPage)
-			+ "\n" + getLang("reply")
-			+ "\n\n" + endMessage;
-		message.reply(msg, (err, info) => {
-			if (err)
-				return message.err(err);
-			message.unsend(Reply.messageID);
-			global.GoatBot.onReply.set(info.messageID, {
-				commandName,
-				messageID: info.messageID,
-				splitPage,
-				author: senderID
-			});
-		});
-	},
+    } catch (err) {
+      console.error("Error generating leaderboard:", err);
+      api.sendMessage("❌ An error occurred while generating leaderboard.", event.threadID);
+    }
+  },
 
-	onChat: async ({ usersData, threadsData, event }) => {
-		const { senderID, threadID } = event;
-		const members = await threadsData.get(threadID, "members");
-		const findMember = members.find(user => user.userID == senderID);
-		if (!findMember) {
-			members.push({
-				userID: senderID,
-				name: await usersData.getName(senderID),
-				nickname: null,
-				inGroup: true,
-				count: 1
-			});
-		}
-		else
-			findMember.count += 1;
-		await threadsData.set(threadID, members, "members");
-	}
+  onChat: async ({ usersData, threadsData, event }) => {
+    const { senderID, threadID } = event;
+    const members = await threadsData.get(threadID, "members") || [];
+    const findMember = members.find(u => u.userID == senderID);
 
+    if (!findMember) {
+      members.push({
+        userID: senderID,
+        name: await usersData.getName(senderID),
+        count: 1
+      });
+    } else findMember.count += 1;
+
+    await threadsData.set(threadID, members, "members");
+  }
 };
