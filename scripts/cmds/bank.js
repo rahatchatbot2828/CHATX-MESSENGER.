@@ -11,6 +11,15 @@ module.exports = {
         shortDescription: "Banking System",
         longDescription: "Full banking with ATM card generator, multiple designs with professional layout.",
         category: "finance",
+        guide: `{pn} - View bank menu
+{pn} register - Register account
+{pn} balance - Check balance  
+{pn} deposit <amount> - Deposit money
+{pn} withdraw <amount> - Withdraw money
+{pn} history - Transaction history
+{pn} card - View ATM card
+{pn} send <amount> - 
+{pn} account - Account information`
     },
   
     formatMoney(amount) {
