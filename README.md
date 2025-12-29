@@ -59,18 +59,7 @@ Repository: **rahatchatbot2828**
 ---
 
 ## 📂 Directory Structure
-rahatchatbot2828/ │── index.js │── config/ │── commands/ │── events/ │── utils/ │── logger/ │── database/ │── package.json │── package-lock.json │── README.md
----
-
-## ⚙️ Installation & Run
-
-```bash
-npm install
-npm start
-node index.js
-🔧 Configuration
-Edit:
-config/config.json
+rahatchatbot2828/ │ ├── index.js ├── package.json ├── package-lock.json ├── README.md │ ├── config/ │   ├── config.json │   └── env.json │ ├── commands/ │   ├── system/ │   ├── fun/ │   ├── admin/ │   └── index.js │ ├── events/ │   ├── message.js │   ├── reaction.js │   └── ready.js │ ├── utils/ │   ├── logger.js │   ├── helper.js │   └── formatter.js │ ├── logger/ │   └── logs/ │ └── database/ └── data.json
 Do not expose credentials
 Do not commit sensitive data
 Verify settings before running
@@ -95,16 +84,7 @@ Yes, while respecting original credits and license.
 ⚠️ Disclaimer
 This project is provided AS IS without warranty.
 The repository owner is not responsible for misuse, bans, or data loss.
-🏆 OFFICIAL CREDITS & ACKNOWLEDGEMENTS
-�
 
-████████╗██╗  ██╗ ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗
-╚══██╔══╝██║  ██║ ██║ ██╔╝██╔══██╗████╗  ██║██╔════╝
-██║   ███████║ █████╔╝ ███████║██╔██╗ ██║██║
-██║   ██╔══██║ ██╔═██╗ ██╔══██║██║╚██╗██║██║
-██║   ██║  ██║ ██║  ██╗██║  ██║██║ ╚████║╚██████╗
-╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝
-�
 
 👑 Sole Original Credit
 NTKhang
