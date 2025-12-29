@@ -2,7 +2,7 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Nezuko%20Bot%20V2&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32" width="100%"/>
 </h1>
 
-# 🐐 Goat Bot V2 update  by Azadx69x
+# 🐐 ChatX-Messenger update  by Rahat
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 
@@ -14,11 +14,11 @@
   <img src="https://komarev.com/ghpvc/?username=syndicate-goat-bot-azad&color=blueviolet&style=flat-square" alt="Profile Views" style="box-shadow: 0 0 18px rgba(255,255,255,0.35); border-radius: 10px;" />
 </p>
 
-[![Join Nezuko Support GC](https://img.shields.io/badge/Messenger-Join-blue?style=for-the-badge&logo=facebook-messenger&logoColor=white)](https://m.me/j/AbZvHioA_xvfjz_Q/)
+[![Join Rahat's Gc GC](https://img.shields.io/badge/Messenger-Join-blue?style=for-the-badge&logo=facebook-messenger&logoColor=white)](https://m.me/j/AbZvHioA_xvfjz_Q/)
 
 ### 📬 Connect with Me
-- 📧 **Email:** [yourmail@example.com](mailto:yourazad@example.com)  
-- 💬 **Facebook:** [Azad on Facebook](https://www.facebook.com/profile.php?id=61578365162382)  
+- 📧 **Email:** [yourmail@example.com](mailto:rahatmahmud929@gmail.com)  
+- 💬 **Facebook:** [Azad on Facebook](https://facebook.com/rahat1837)  
 - 🧠 **Discord:** `azad09788`
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
@@ -27,7 +27,7 @@
 
 <!-- Animated Subtitle th Typing Effect -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E9EFF&center=true&vCenter=true&width=600&lines=🚀+Welcome+to+Goat+Bot+V2!;🤖+Messenger+Bot+by+Azadx69x;💫+Powered+by+Nezuko+Chat+Bot;🎯+Modular+%26+Modern+Design" alt="Typing SVG" style="box-shadow: 0 0 25px rgba(255,255,255,0.4); border-radius: 14px;" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=2E9EFF&center=true&vCenter=true&width=600&lines=🚀+Welcome+to+ChatX+-Messenger+V2!;🤖+Messenger+Bot+by+Rahat;💫+Powered+by+ChatX+Messenger +Bot;🎯+Modular+%26+Modern+Design" alt="Typing SVG" style="box-shadow: 0 0 25px rgba(255,255,255,0.4); border-radius: 14px;" />
 </p>
 
 <!-- Animated Badges -->
