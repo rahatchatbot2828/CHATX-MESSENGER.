@@ -59,7 +59,7 @@ module.exports = {
     const infoTexts = [
       `⏳ Uptime: ${uptimeStr}`,
       `📶 Ping: ${ping} ms`,
-      `👑 Owner: Azad`
+      `👑 Owner: 𝐑𝐀𝐇𝐀𝐓`
     ];
 
     infoTexts.forEach(text => {
