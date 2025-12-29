@@ -91,7 +91,7 @@ module.exports = {
       hostname,
       `${ping} ms`,
       `${botMemory} MB`,
-      "Azad 💥"
+      "ℝ𝕒𝕙𝕒𝕥💥"
     ];
 
     const labelColors = [
