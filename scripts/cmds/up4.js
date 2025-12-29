@@ -36,7 +36,7 @@ module.exports = {
       await delay(120);
       try {
         await api.editMessage(
-          "⏳Nezuko System 🧘‍♂️\n" + loadStages[i],
+          "⏳ System 🧘‍♂️\n" + loadStages[i],
           msgID,
           event.threadID
         );
@@ -81,7 +81,7 @@ module.exports = {
 ║
 ║ ⚙️ PID      : ${process.pid}
 ║ 🛠 Node.js  : ${process.version}
-║ 🧘‍♂️ Owner   : Azadx69x
+║ 🧘‍♂️ Owner   : 𝐑𝐀𝐇𝐀𝐓
 ╠═════════════════════╣
 ║        ✅ SYSTEM RUNNING
 ╚═════════════════════╝
