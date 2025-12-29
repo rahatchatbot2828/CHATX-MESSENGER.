@@ -1,4 +1,4 @@
-<!-- 🔥 ChatX-Messenger | Professional README -->
+<!-- 🔥 ChatX-Messenger | Full Professional README -->
 
 <h1 align="center">
   🤖 ChatX-Messenger
@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>A stable, scalable, and production-ready Facebook Messenger bot framework.</b><br/>
-  Designed with clean architecture, modularity, and long-term maintainability in mind.
+  Designed with clean architecture, modularity, and long-term maintainability.
 </p>
 
 <p align="center">
@@ -19,9 +19,8 @@
 
 ## 📘 Introduction
 
-**ChatX-Messenger** is a professional-grade Facebook Messenger chatbot framework built for developers who value performance, stability, and clean code practices.
-
-This project focuses on long-term usability, easy customization, and respect for open-source principles.
+**ChatX-Messenger** is a professional-grade Facebook Messenger chatbot framework  
+built for developers who prioritize performance, stability, and clean code.
 
 Repository: **rahatchatbot2828**
 
@@ -29,29 +28,29 @@ Repository: **rahatchatbot2828**
 
 ## 🎯 Project Goals
 
-- Maintain a clean and modular codebase  
-- Ensure high performance and reliability  
-- Allow easy customization without breaking core logic  
-- Respect original authorship and licensing  
-- Provide a developer-friendly structure  
+- Clean and modular architecture  
+- High performance & reliability  
+- Easy customization  
+- Long-term maintainability  
+- Respect for open-source ethics  
 
 ---
 
 ## ✨ Core Features
 
-- ⚡ Fast message handling system  
-- 🧩 Modular command & event loader  
+- ⚡ Fast message processing  
+- 🧩 Modular command & event system  
 - 🛡️ Stable runtime with error handling  
-- 🔧 Centralized configuration management  
-- 📁 Clean folder organization  
-- ♻️ Easy maintenance & updates  
+- 🔧 Centralized configuration  
+- 📁 Organized folder structure  
+- ♻️ Easy maintenance  
 
 ---
 
 ## 🧰 Technology Stack
 
 | Component | Technology |
-|--------|-----------|
+|---------|------------|
 | Language | JavaScript |
 | Runtime | Node.js (20.x recommended) |
 | Package Manager | npm |
@@ -59,13 +58,20 @@ Repository: **rahatchatbot2828**
 
 ---
 
-## 📂 Directory Structure---
+## 📂 Directory Structure
+rahatchatbot2828/ │── index.js │── config/ │── commands/ │── events/ │── utils/ │── logger/ │── database/ │── package.json │── package-lock.json │── README.md
+---
 
-## ⚙️ Installation
+## ⚙️ Installation & Run
 
-### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/your-username/rahatchatbot2828.gitrahatchatbot2828/ │── index.js │── config/ │── commands/ │── events/ │── utils/ │── logger/ │── database/ │── package.json │── package-lock.json │── README.mdnode index.jsconfig/config.jsonDo not expose credentials
+npm install
+npm start
+node index.js
+🔧 Configuration
+Edit:
+config/config.json
+Do not expose credentials
 Do not commit sensitive data
 Verify settings before running
 🛡️ Security Policy
