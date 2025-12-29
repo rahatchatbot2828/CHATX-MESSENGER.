@@ -30,29 +30,29 @@ module.exports = {
 ╭─╼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╾─╮
 │           👑 OWNER INFO 👑
 │
-│ 🧑‍💼 Name       : Azad
+│ 🧑‍💼 Name       : 𝐑𝐀𝐇𝐀𝐓
 │ 🪪 Username   : azadxxx075
-│ 🎂 Birthday   : 17 July
-│ 🐸 Age        : 18
-│ 📚 Study      : 🚬
+│ 🎂 Birthday   : 21 Nov
+│ 🐸 Age        : 15+
+│ 📚 Study      : 10
 │ 💕 Relation   : Single
-│ 📱 Contact    : 019747624**
-│ ✉️ Email      : azadxxx92929@email.com
+│ 📱 Contact    : 01828832911
+│ ✉️ Email      : rahatmahmud929@gmail.com
 │ 🌍 Location   : Chittagong, Bangladesh
 │ 🕋 Religion   : Islam
-│ 🌐 Facebook   : fb.com/profile.php?id=61578365162382
+│ 🌐 Facebook   : https://www.facebook.com/rahat122485
 │ 🎮 Hobby      : Gaming
-│ 💻 Skill      : JavaScript, Node.js, Bot Dev
+│ 💻 Skill      : 𝐆𝐨𝐫𝐢𝐛𝐞𝐫 𝐚𝐛𝐫 𝐬𝐤𝐢𝐥𝐥
 │ 🎵 Fav Song   : sesh-kanna
 │ 🕐 Timezone   : GMT+6 (Bangladesh)
 │
 │           🤖 BOT INFO 🤖
 │
-│ 🛠 Bot Name   : ✰🪽°𝙉𝙚𝙯𝙪𝙠𝙤 𝘾𝙝𝙖𝙣°🐰࿐
+│ 🛠 Bot Name   : ✰🪽°ℝ𝕀ℕ ℕ𝕆ℍ𝔸ℝ𝔸°🐰࿐
 │ 🔰 Prefix     : )
-│ 👑 Author     : Azad
+│ 👑 Author     : 𝐑𝐀𝐇𝐀𝐓
 │
-│         ⚡ Powered by Azad ⚡
+│         ⚡ 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐑𝐀𝐇𝐀𝐓 ⚡
 ╰─╼━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╾─╯
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `;
