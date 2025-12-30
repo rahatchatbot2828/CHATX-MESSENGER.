@@ -219,7 +219,7 @@ module.exports = {
 ├─────────────────────
 │ 👤 User : ${username}
 │ 🆔 UID  : ${targetUID}
-│ 👑 Author: Azadx69x
+│ 👑 Author: RAHAT
 └─────────────────────`,
             attachment: fs.createReadStream(outputPath)
           },
