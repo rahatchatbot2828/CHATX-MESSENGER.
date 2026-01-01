@@ -1,8 +1,14 @@
+      /**
+ * Wingo Game Bot Command
+ * Author: Rahat Mahmud
+ * Version: 1.0
+ */
+
 const fs = require("fs");
 const path = require("path");
 
-// Save path
-const DATA_PATH = path.join(__dirname, "../../data/wingoMoney.json");
+// JSON file same folder e
+const DATA_PATH = path.join(__dirname, "wingoMoney.json");
 
 // Game images
 const GAME_IMG = "https://files.catbox.moe/ictaql.jpg";
@@ -20,6 +26,8 @@ function sizeOf(n) { return n>=5?"big":"small"; }
 
 module.exports = {
   name: "wingo",
+  author: "Rahat Mahmud",
+  version: "1.0",
   async execute(message,args,prefix) {
     const uid = message.senderID;
     const data = loadData();
