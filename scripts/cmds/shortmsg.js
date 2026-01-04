@@ -40,14 +40,14 @@ module.exports = {
     if (text === "intro azad") {
       return message.reply({
         body: `
-Name: Azad [Admin]
-Class: 🐿️💨  [😒]
-Address: Chittagong 
-Age: 17
-Blood: O+ maybe
+Name: Rahat [Admin]
+Class: 10 [😒]
+Address: Barishal 
+Age: 16+
+Blood: A+ maybe
 Weight: jani na
-Height: 5'9
-Birthday: eta abar ki 🐿️💨
+Height: 5'7
+Birthday:21 Nov😶
 𝙎𝙞𝙣𝙜𝙡𝙚 𝙑𝙞𝙧𝙜𝙞𝙣 𝙪𝙡𝙩𝙧𝙖 𝙥𝙧𝙤 𝙢𝙖𝙭`,
         attachment: await global.utils.getStreamFromURL("https://i.imgur.com/DV2iCBd.jpeg")
       });
