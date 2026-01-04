@@ -125,7 +125,7 @@ async function downloadAndSendVideo(api, event, url, platform, message) {
 ║ 🎥 Platform: ${platform.charAt(0).toUpperCase() + platform.slice(1)}
 ║ 💾 ${filename}
 ║ 🗂️Size: ${formatFileSize(stats.size)}
-║ 💫 Made by Azadx69x
+║ 💫 Made by Rahat
 ╚═════════════════════╝`;
       
         await api.sendMessage({
