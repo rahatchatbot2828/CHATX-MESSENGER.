@@ -98,4 +98,146 @@ Follow these steps carefully to install ChatX-Messenger.
 
 ```bash
 git clone https://github.com/rahatchatbot2828/ChatX-Messenger.git
-j
+```
+
+
+📦 Installation Guide
+
+2️⃣ Go to the Project Directory
+
+```bash
+cd ChatX-Messenger
+```
+
+3️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+· ✅ This will automatically install all required packages listed in package.json
+
+▶️ Running the Bot
+
+After installation is complete, start the bot using:
+
+```bash
+node index.js
+```
+
+· ✅ If everything is configured correctly, you will see logs in the terminal indicating successful startup
+
+🛠️ Customization Guide
+
+One of the main strengths of ChatX-Messenger is its flexibility
+
+🔧 Commands
+
+All command files are located inside:
+
+```
+scripts/commands/
+```
+
+You can:
+
+· ✏️ Edit existing commands
+· ➕ Add new commands
+· ⚙️ Customize command behavior
+· 📁 Each command follows a modular structure for better maintenance
+
+⚡ Events
+
+Event-based features are located inside:
+
+```
+scripts/events/
+```
+
+These handle:
+
+· 👥 User join events
+· 🎉 Welcome messages
+· 💬 Group-related triggers
+· 🔄 You can fully customize how the bot reacts to events
+
+⚙️ Configuration Explained
+
+The main configuration file is:
+
+```
+config.json
+```
+
+From this file you can change:
+
+· 🤖 Bot name
+· 🔤 Command prefix
+· 👑 Admin permissions
+· ⚙️ Global bot settings
+· ⚠️ Always restart the bot after changing config.json
+
+📂 Folder Structure (Overview)
+
+```
+ChatX-Messenger/
+│
+├── config.json
+├── index.js
+├── package.json
+│
+├── scripts/
+│   ├── commands/
+│   └── events/
+│
+└── README.md
+```
+
+· ✅ This structure keeps the project clean and easy to understand
+
+✅ Best Practices
+
+· ⚠️ Do not remove original credits
+· 💾 Always backup files before editing
+· 🧪 Test new commands in a private group
+· 🔄 Keep dependencies updated
+· 📝 Follow clean coding practices
+
+❤️ Support & Help
+
+If you face any issues or want new features:
+
+· 📝 Create an Issue on GitHub
+· 🗣️ Describe your problem clearly
+· 📸 Attach logs or screenshots if possible
+· 📞 Contact the developers if needed
+· 👥 Community feedback helps improve the project
+
+⚠️ Disclaimer
+
+· 🔄 This project is a modified version of Goat-Bot-V2
+· 👨‍💻 All original rights and credits belong to the original creator
+· ❌ Do not claim this project as fully original
+· 🤝 Respect open-source ethics
+
+🌟 Final Note
+
+ChatX-Messenger is built with passion, learning, and dedication to provide a smooth and reliable Messenger bot experience.
+
+Feel free to:
+
+· 🎨 Customize
+· ⬆️ Improve
+· 📤 Share your own version
+
+But always:
+
+· 🙏 Respect the original creator's hard work ❤️
+
+Happy Coding! 🚀
+
+---
+
+
+
+
