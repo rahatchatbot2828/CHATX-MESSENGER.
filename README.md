@@ -29,7 +29,7 @@ It provides features like welcome messages, interactive commands, and more to en
 1. Clone the repository:  
    ```bash
    git clone https://github.com/rahatchatbot2828/ChatX-Messenger.git
-   Navigate to the project folder:
+   
 Copy code
 Bash
 cd ChatX-Messenger
