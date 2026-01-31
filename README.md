@@ -1,60 +1,46 @@
-<!-- 🔥 ChatX-Messenger | Full Professional README -->
+# ChatX-Messenger
 
-<h1 align="center">
-  🤖 ChatX-Messenger
-</h1>
-
-<p align="center">
-  <b>A stable, scalable, and production-ready Facebook Messenger bot framework.</b><br/>
-  Designed with clean architecture, modularity, and long-term maintainability.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Node.js-20.x-green?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square"/>
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square"/>
-</p>
+ChatX-Messenger is a powerful and user-friendly chatbot based on the Goat Bot framework.  
+It provides features like welcome messages, interactive commands, and more to enhance your chat experience.
 
 ---
 
-## 📘 Introduction
+## Authors
 
-**ChatX-Messenger** is a professional-grade Facebook Messenger chatbot framework  
-built for developers who prioritize performance, stability, and clean code.
-
-Repository: **rahatchatbot2828**
-
----
-
-## 🎯 Project Goals
-
-- Clean and modular architecture  
-- High performance & reliability  
-- Easy customization  
-- Long-term maintainability  
-- Respect for open-source ethics  
+| Name                | Role                | Image |
+|--------------------|-------------------|-------|
+| Real Author         | Original Creator   | *(Original author image if available)* |
+| Rahat Mahmud        | Modified by        | ![Rahat](https://files.catbox.moe/396hu2.jpg) |
+| Azad                | Modified by        | ![Azad](https://files.catbox.moe/ot0xr8.jpg) |
 
 ---
 
-## ✨ Core Features
+## Features
 
-- ⚡ Fast message processing  
-- 🧩 Modular command & event system  
-- 🛡️ Stable runtime with error handling  
-- 🔧 Centralized configuration  
-- 📁 Organized folder structure  
-- ♻️ Easy maintenance  
+- Welcome messages with custom images  
+- Interactive fun commands  
+- Mention system for commands  
+- Fully customizable for your own server or chat group  
 
 ---
 
-## 🧰 Technology Stack
+## Installation
 
-| Component | Technology |
-|---------|------------|
-| Language | JavaScript |
-| Runtime | Node.js (20.x recommended) |
-| Package Manager | npm |
-| Platform | Facebook Messenger |
-
----
-
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/rahatchatbot2828/ChatX-Messenger.git
+   Navigate to the project folder:
+Copy code
+Bash
+cd ChatX-Messenger
+Install dependencies:
+Copy code
+Bash
+npm install
+Run the bot:
+Copy code
+Bash
+node index.js
+License
+This project is based on Goat Bot. Please respect the Real Author's work.
+Modified by Rahat Mahmud and Azad.
